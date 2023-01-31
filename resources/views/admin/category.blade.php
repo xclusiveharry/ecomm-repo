@@ -58,7 +58,7 @@
 
                         <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">&times;</button>
 
-                        {{ session()->get('message') }}
+                        {{session()->get('message')}}
 
                     </div>
 
