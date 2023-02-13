@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <base href="/public">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="shortcut icon" href="home/images/favicon.png" type="">
+      <title>Famms - Fashion HTML Template</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
+
+      <!-- font awesome style -->
+      <link href="home/css/font-awesome.min.css" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="home/css/style.css" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="home/css/responsive.css" rel="stylesheet" />
 </head>
 <body>
 
+
+<div class="hero_area">
+    <!-- header section starts -->
+
+    <span style="font-size: 18px;">@include('home.header')</span>
+
 <div class="container">
 
-    <h1>Pay Using Your Card - Total Amount {{$totalprice}}</h1>
+    <h1 style="text-align: center; font-size: 24px; paing-bottom: 20px;">Pay Using Your Card - Total Amount ${{$totalprice}}</h1>
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -28,7 +48,7 @@
 
                     <form
                             role="form"
-                            action="{{ route('stripe.post') }}"
+                            action="{{ route('stripe.post',$totalprice) }}"
                             method="post"
                             class="require-validation"
                             data-cc-on-file="false"
@@ -78,7 +98,7 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+                                <input type="submit" name="" value="Pay Now">
                             </div>
                         </div>
 
@@ -162,4 +182,14 @@ $(function() {
 
 });
 </script>
+
+<!-- jQery -->
+<script src="home/js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="home/js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="home/js/bootstrap.js"></script>
+<!-- custom js -->
+<script src="home/js/custom.js"></script>
+
 </html>

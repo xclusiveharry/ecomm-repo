@@ -8,6 +8,10 @@ use App\Models\Category;
 
 use App\Models\Product;
 
+use App\Models\Order;
+
+use PDF;
+
 
 class AdminController extends Controller
 {
@@ -123,6 +127,35 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message','Product Updated Successfully');
 
+    }
+
+    public function order()
+    {
+        $order=order::all();
+
+        return view('admin.order',compact('order'));
+    }
+
+    public function delivered($id)
+    {
+        $order=order::find($id);
+
+        $order->delivery_status="delivered";
+
+        $order->payment_status='paid';
+
+        $order->save();
+
+        return redirect()->back();
+    }
+
+    public function print_pdf($id)
+    {
+        $order=order::find($id);
+
+        $pdf=PDF::loadview('admin.pdf',compact('order'));
+
+        return $pdf->download('order_details.pdf');
     }
 
 }
